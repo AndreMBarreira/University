@@ -19,5 +19,7 @@ namespace ContosoUniversity.Data
         public DbSet<ContosoUniversity.Models.Enrollment>? Enrollment { get; set; }
 
         public DbSet<ContosoUniversity.Models.Course>? Course { get; set; }
+
+        public DbSet<ContosoUniversity.Models.Instructor>? Instructor { get; set; }
     }
 }
