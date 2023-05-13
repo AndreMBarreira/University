@@ -28,6 +28,7 @@ namespace ContosoUniversity.Controllers
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["FirstNameSortParm"] = sortOrder == "FirstMidName" ? "firstmidname_desc" : "FirstMidName";
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
 
             if (searchString != null)
@@ -44,7 +45,8 @@ namespace ContosoUniversity.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 students = students.Where(s => s.LastName.Contains(searchString)
-                                       || s.FirstMidName.Contains(searchString));
+                                       || s.FirstMidName.Contains(searchString)
+                                       || s.EnrollmentDate.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {
@@ -56,6 +58,12 @@ namespace ContosoUniversity.Controllers
                     break;
                 case "date_desc":
                     students = students.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                case "FirstMidName":
+                    students = students.OrderBy(c => c.FirstMidName);
+                    break;
+                case "firstmidname_desc":
+                    students = students.OrderByDescending(c => c.FirstMidName);
                     break;
                 default:
                     students = students.OrderBy(s => s.LastName);
