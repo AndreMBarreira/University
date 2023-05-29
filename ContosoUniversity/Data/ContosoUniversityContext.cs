@@ -22,11 +22,11 @@ namespace ContosoUniversity.Data
 
         public DbSet<Instructor>? Instructor { get; set; }
 
-        public DbSet<Department> Department { get; set; }
+        public DbSet<Department>? Department { get; set; }
 
-        public DbSet<OfficeAssignment> OfficeAssignment { get; set; }
+        public DbSet<OfficeAssignment>? OfficeAssignment { get; set; }
 
-        public DbSet<CourseAssignment> CourseAssignment { get; set; }
+        public DbSet<CourseAssignment>? CourseAssignment { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
